@@ -26,8 +26,8 @@ for key in (
     if key in st.secrets:
         os.environ[key] = str(st.secrets[key])
 
-os.environ.setdefault("SMALL_MODEL", "groq/llama-3.1-8b-instant")
-os.environ.setdefault("LARGE_MODEL", "groq/llama-3.3-70b-versatile")
+os.environ.setdefault("SMALL_MODEL", "groq/openai/gpt-oss-20b")
+os.environ.setdefault("LARGE_MODEL", "groq/openai/gpt-oss-120b")
 os.environ.setdefault("CORPUS_PATH", str(PROJECT_DIR / "data" / "corpus.json"))
 os.environ.setdefault("DATABASE_PATH", str(PROJECT_DIR / "data" / "rag.sqlite3"))
 
