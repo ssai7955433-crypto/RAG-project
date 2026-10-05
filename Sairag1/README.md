@@ -1,6 +1,6 @@
 # Sairag1: Semantic Cache and Cost-Aware RAG
 
-A standalone RAG project based on the first optimization project in the brief. It includes a baseline mode, semantic answer caching, rule-based small/large-model routing, escalation, SQLite request logging, an evaluation replay script, and a Streamlit dashboard.
+A standalone RAG project based on the first optimization project in the brief. It includes a baseline mode, semantic answer caching, rule-based small/large-model routing, escalation, SQLite request logging, an evaluation replay script, and a Streamlit chat app with metrics.
 
 The included fictional handbook corpus and six evaluation questions are a runnable demo, not a statistically meaningful benchmark. Expand them to 50–200 real documents and 50–100 manually checked questions before making performance claims.
 
@@ -8,7 +8,7 @@ The included fictional handbook corpus and six evaluation questions are a runnab
 
 - FastAPI for the `/ask` API
 - Sentence Transformers (`all-MiniLM-L6-v2`) for local query and document embeddings
-- LiteLLM for model calls; the defaults target locally running Ollama models
+- LiteLLM for model calls; local runs can use Ollama, while the hosted Streamlit app uses Groq
 - SQLite for versioned cache entries, indexed chunks, and request logs
 - Streamlit for the metrics dashboard
 
@@ -63,13 +63,24 @@ python -m scripts.evaluate --repeats 3 --output eval_results.csv
 
 The CSV contains one row per request, with answer-token overlap, expected-source retrieval hit, cache hit, route, cost, and latency. Answer overlap is only a lexical proxy; inspect answers manually or add an LLM judge before treating it as correctness. Compare baseline versus optimized on the same query/repeat sequence. The default six-row set demonstrates the workflow only; manually check a larger eval set before reporting resume metrics.
 
-## Dashboard
+## Streamlit app
 
 ```powershell
 streamlit run dashboard.py
 ```
 
-The dashboard reads `data/rag.sqlite3` and displays cost/request, cache-hit rate, route counts, and p50/p95 latency. It reports the latest 1,000 requests through the API metrics endpoint; the dashboard shows the stored request log.
+The app answers questions from the bundled handbook and includes an aggregate metrics tab. The shared `.env.example` defaults to Ollama for the FastAPI workflow. For local Streamlit with Groq, set `GROQ_API_KEY` and change `SMALL_MODEL` and `LARGE_MODEL` to the Groq IDs in `.streamlit/secrets.toml.example`; alternatively keep the Ollama model IDs and run Ollama locally.
+
+### Deploy on Streamlit Community Cloud
+
+1. Open [Streamlit Community Cloud](https://share.streamlit.io/) and sign in with the GitHub account that can access `ssai7955433-crypto/RAG-project`.
+2. Choose **Create app** and select repository `ssai7955433-crypto/RAG-project`, branch `main`, and main file path `Sairag1/dashboard.py`.
+3. In the app's **Advanced settings / Secrets**, add a Groq API key and the model IDs. Use `.streamlit/secrets.toml.example` as a template, but replace the placeholder with your own key. Never commit the real key.
+4. Deploy. The first startup downloads the embedding model and may take a few minutes. Streamlit Cloud will then show the public app URL.
+
+Get a Groq API key from [Groq Console](https://console.groq.com/keys). The application uses local sentence-transformer embeddings, so only LLM calls require the Groq key. The SQLite cache and request log live on the app filesystem and may reset when the cloud app restarts; use this as a demo, not durable production storage. The shared cache is only appropriate for the bundled non-personal corpus.
+
+For local Streamlit, Groq settings can be set in `.env`; `.streamlit/secrets.toml.example` shows the cloud Secrets format. Cost estimates are zero until current provider prices are configured per million tokens.
 
 ## Cache threshold tuning
 
