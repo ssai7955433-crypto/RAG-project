@@ -1,0 +1,22 @@
+[
+  {
+    "id": "leave-policy",
+    "text": "Annual leave policy: Full-time employees receive 20 days of paid annual leave per calendar year. Leave requests should be submitted in the HR portal at least five working days before the first day off. A manager must approve each request. Unused leave may carry over up to five days into the next calendar year, and carried-over days must be used by March 31."
+  },
+  {
+    "id": "remote-work",
+    "text": "Remote work policy: Employees may work remotely up to three days per week with manager approval. Teams may set shared in-office days. Employees handling restricted customer data must use a company-managed device and the approved VPN. Remote work from another country requires written approval from Human Resources and Legal before travel."
+  },
+  {
+    "id": "expenses",
+    "text": "Expense reimbursement: Submit business expenses in the finance portal within 30 days of purchase. Receipts are required for expenses above 25 dollars. A manager approves expenses, and Finance processes approved claims in the next payment cycle. Personal purchases, commuting costs, and expenses without a business purpose are not reimbursable."
+  },
+  {
+    "id": "security",
+    "text": "Account security: Use multi-factor authentication for all company accounts. Report a suspected phishing email to security@example.test using the report-phishing button; do not open attachments or reply. For a compromised account, contact the IT help desk immediately and change the password from a trusted device. Passwords must not be shared with colleagues."
+  },
+  {
+    "id": "onboarding",
+    "text": "New employee onboarding: The manager submits an equipment request at least five business days before the start date. IT prepares a laptop and account access. On the first day, the employee meets their manager, completes required security training, and verifies multi-factor authentication. Questions about benefits should be directed to Human Resources."
+  }
+]

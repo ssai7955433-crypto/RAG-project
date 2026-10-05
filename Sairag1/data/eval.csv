@@ -1,0 +1,7 @@
+id,question,reference_answer,source_id
+leave-days,How many paid annual leave days does a full-time employee receive?,Full-time employees receive 20 days of paid annual leave per calendar year.,leave-policy
+leave-carryover,When must carried-over leave be used?,Carried-over annual leave must be used by March 31.,leave-policy
+remote-international,What approval is needed to work remotely from another country?,Written approval from Human Resources and Legal is required before travel.,remote-work
+expense-receipt,When is a receipt required for an expense?,A receipt is required for expenses above 25 dollars.,expenses
+account-phishing,What should I do with a suspected phishing email?,Report it to the security team and do not open attachments or reply.,security
+onboarding-equipment,How early should a manager request new hire equipment?,The equipment request should be submitted at least five business days before the start date.,onboarding

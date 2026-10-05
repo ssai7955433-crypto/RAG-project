@@ -1,0 +1,7 @@
+query_a,query_b,should_match
+How many paid annual leave days do full-time employees get?,What is the yearly paid leave allowance for a full-time employee?,1
+How do I report phishing?,What should I do about a suspicious phishing message?,1
+When are expense receipts required?,At what purchase amount do I need an expense receipt?,1
+What is the annual leave policy in the US?,What is the annual leave policy in the EU?,0
+How do remote-work approvals work for employees?,How do expense reimbursements work for employees?,0
+What should I do about a compromised account?,What should I do about a suspicious phishing message?,0
